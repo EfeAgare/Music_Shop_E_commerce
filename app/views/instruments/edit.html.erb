@@ -1,6 +1,9 @@
-<h1>Editing Instrument</h1>
+<% content_for :header do %>
 
-<%= render 'form', instrument: @instrument %>
+        Editing Instrument
+    
+<% end %>
 
-<%= link_to 'Show', @instrument %> |
-<%= link_to 'Back', instruments_path %>
+<div class="pv4">
+  <%= render 'form', instrument: @instrument %>
+</div>
