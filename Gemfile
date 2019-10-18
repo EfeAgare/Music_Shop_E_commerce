@@ -42,6 +42,7 @@ group :development, :test do
   gem 'guard'
   gem "better_errors"
   gem "guard-livereload"
+  gem "pry"
 end
 
 group :development do

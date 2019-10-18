@@ -1,39 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Instruments</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Brand</th>
-      <th>Model</th>
-      <th>Description</th>
-      <th>Condition</th>
-      <th>Finish</th>
-      <th>Title</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @instruments.each do |instrument| %>
-      <tr>
-        <td><%= instrument.brand %></td>
-        <td><%= instrument.model %></td>
-        <td><%= instrument.description %></td>
-        <td><%= instrument.condition %></td>
-        <td><%= instrument.finish %></td>
-        <td><%= instrument.title %></td>
-        <td><%= instrument.price %></td>
-        <td><%= link_to 'Show', instrument %></td>
-        <td><%= link_to 'Edit', edit_instrument_path(instrument) %></td>
-        <td><%= link_to 'Destroy', instrument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Instrument', new_instrument_path %>
+<% content_for :header do %>
+  Browse the latest instruments on Music-Shop
+<% end %>
+<div class="instrument-index-grid pt4">
+  <% @instruments.each do |instrument| %>
+    <div class="instrument border-light">
+      <div class="instrument-thumb">
+        <%= link_to image_tag(instrument.image_url(:thumb)), instrument %>
+        <% if instrument.condition? %>
+          <div class="condition">
+            <span class="tag is-dark"><%= instrument.condition %></span>
+          </div>
+        <% end %>
+      </div>
+      <div class="pa3" style="display: flex !important;
+    flex-direction: column !important;">
+        <div style="
+        height: 100px;
+    overflow: hidden;
+    margin-bottom: 20px;">
+          <h3 class="fw7 f4 title"><%= link_to instrument.title, instrument %></h3>
+        </div>
+        <div style="margin-bottom: 20px">
+          <p class="has-text-gray fg pt1">Sold by <%= instrument.user.name %></p>
+        </div>
+        <div  style="margin-bottom: 20px">
+        <div style="  position: absolute;
+       bottom: 10px;
+      right: 10px;">
+          <p class="f3 fw6 has-text-right pt2 price"><%= number_to_currency(instrument.price) %></p>
+        </div>
+        </div>
+        <% if instrument_author(instrument) %>
+          <%= link_to 'Edit', edit_instrument_path(instrument), class: "button is-small" %>
+          <%= link_to 'Delete', instrument, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

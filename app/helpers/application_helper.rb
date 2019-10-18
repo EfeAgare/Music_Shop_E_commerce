@@ -4,7 +4,12 @@ module ApplicationHelper
   end
 
   def total_cart_items
-    total = @cart.line_items.map(&:quantity).sum
-    return total if total > 0
+    if @cart
+      total = @cart.line_items.map(&:quantity).sum
+      return total if total > 0
+    else 
+      return 
+    end
+
   end
 end
