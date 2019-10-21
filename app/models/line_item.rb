@@ -5,4 +5,5 @@ class LineItem < ApplicationRecord
   def total_price
     instrument.price.to_i * quantity.to_i
   end
+
 end

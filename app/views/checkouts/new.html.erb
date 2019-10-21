@@ -1,18 +1,29 @@
+<div class="notice-wrapper">
+  <% if flash[:error] %>
+    <div class="show notice error notice-error">
+      <span class="notice-message">
+        <%= alert_string(flash[:error]) %>
+      </span>
+    </div>
+  <% end %>
+</div>
+<div class="checkout">
 <div class="wrapper">
   <div class="checkout container">
     <div class="content">
       <% content_for :header do %>
        <p>
-          Make payment with Braintree using PayPal or a card
+          Make payment with Music-Shop using PayPal or a card
         </p>
        <% end %>
 
-      <%= form_tag("/checkouts", method: "post", id: "payment-form") do %>
+      
+    <%= form_tag("/checkouts", method: "post", id: "payment-form") do %>
         <section>
           <label for="amount">
             <span class="input-label">Amount</span>
             <div class="input-wrapper amount-wrapper">
-              <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
+              <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="<%= @cart.total_price %>">
             </div>
           </label>
 
@@ -25,8 +36,18 @@
         <button class="button" type="submit"><span>Make Transaction</span></button>
       <% end %>
 
+<div class="columns">
+          
+      <div class="column total has-text-right">
+      <h4 class="title is-4">
+       <%= link_to 'Back to Cart', cart_path(@cart), class: 'button is-warning'%>
+      </h4>
     </div>
+
   </div>
+  </div>
+  </div>
+</div>
 </div>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.20.3/js/dropin.min.js"></script>
@@ -57,4 +78,3 @@
     });
   });
 </script>
-<%= javascript_include_tag 'application', 'data-turbolinks-suppress-warning' => true, 'data-turbolinks-track' => true %>

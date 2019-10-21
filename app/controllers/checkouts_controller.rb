@@ -1,5 +1,5 @@
 class CheckoutsController < ApplicationController
-
+  
 
   ## first create the transaction Status
   TRANSACTION_SUCCESS_STATUSES = [
@@ -30,7 +30,8 @@ class CheckoutsController < ApplicationController
   ## 3 generate a client token
 
   def new
-    @client_token = gateway.client_token.generate(:customer_id => current_user.id)
+    @cart = Cart.find(session[:cart_id])
+    @client_token = gateway.client_token.generate
   end
 
 
@@ -51,11 +52,13 @@ class CheckoutsController < ApplicationController
     )
 
     if result.success? || result.transaction
+      Cart.find(session[:cart_id]).destroy
+      session[:cart_id] = nil
       redirect_to checkout_path(result.transaction.id)
     else
       error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
       flash[:error] = error_messages
-      redirect_to new_checkout_path
+      redirect_to cart_checkout_path(session[:cart_id])
     end
   end
   

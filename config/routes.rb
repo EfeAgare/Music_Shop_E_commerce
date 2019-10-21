@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   }
   root 'instruments#index'
 
-  resources :checkouts,  only: [:new, :create, :show]
+  resources :checkouts, only: [:create, :show]
+
+  get "/checkouts/new/:id", to: "checkouts#new",  as: "cart_checkout"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

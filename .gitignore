@@ -12,7 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+# Ignore application configuration
+/config/application.yml
 .env
 # Ignore uploaded files in development.
 /storage/*

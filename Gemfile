@@ -25,7 +25,14 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'coffee-rails'
+# See https://github.com/rails/execjs#readme for more supported runtimes
+# gem 'therubyracer', platforms: :ruby
 
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+
+gem "braintree", "~> 2.99.0"
 
 gem "bulma-rails", "~> 0.7.5"
 gem "simple_form"
@@ -66,4 +73,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "braintree", "~> 2.99.0"
+
