@@ -80,4 +80,26 @@ The nitro-cellulose lacquer finish and our proprietary antiquing process make ea
   price: "799",
   image: Rails.root.join("app/assets/images/instrument6.jpg").open,
   user_id: user.id
+},
+{
+  title: "The acoustic guitar",
+  brand: "Ibanez",
+  model: "SG",
+  description: "Path Metheny Signature model guitar in excellent condition. Near zero fret wear and electronics work as expected. Gorgeous natural finish and high quality materials. Back looks amazing as well. No buzz nor issues, low action and very nice tone.",
+  condition: "Used",
+  finish: "Yellow",
+  price: "799",
+  image: Rails.root.join("app/assets/images/instrument7.jpg").open,
+  user_id: user.id
+},
+{
+  title: "Pro Electro Acoustic Semi Electric Guitar",
+  brand: "Ibanez",
+  model: "SG",
+  description: "Path Metheny Signature model guitar in excellent condition. Near zero fret wear and electronics work as expected. Gorgeous natural finish and high quality materials. Back looks amazing as well. No buzz nor issues, low action and very nice tone.",
+  condition: "Used",
+  finish: "Yellow",
+  price: "799",
+  image: Rails.root.join("app/assets/images/instrument8.png").open,
+  user_id: user.id
 }])
